@@ -46,12 +46,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-MDK-ARM/X_Infantry.uvguix.*
-MDK-ARM/X_Infantry/*
+MDK-ARM/New_Infantry.uvguix.*
+MDK-ARM/New_Infantry/*
 MDK-ARM/startup_stm32f427xx.lst
-MDK-ARM/X_Infantry.uvoptx
+MDK-ARM/New_Infantry.uvoptx
 *.uvprojx
-MDK-ARM/X_Infantry.uvoptx
+MDK-ARM/New_Infantry.uvoptx
 *.uvprojx
 *.uvoptx
-MDK-ARM/X_Infantry.uvprojx
+MDK-ARM/New_Infantry.uvprojx
