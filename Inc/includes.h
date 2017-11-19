@@ -1,4 +1,14 @@
-/* Define to prevent recursive inclusion -------------------------------------*/
+/**
+  ******************************************************************************
+  * File Name          : includes.h
+  * Description        : 统一包含文件
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #ifndef __INCLUDES_H
 #define __INCLUDES_H
 

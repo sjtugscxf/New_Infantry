@@ -801,8 +801,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5A0C6175)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5A0C6175)
 I (../Inc/gpio.h)(0x5A0D9DDD)
 I (../Inc/dma.h)(0x5A0D9DDE)
-F (../Src/main.c)(0x5A0E7113)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\main.o --omf_browse new_infantry\main.crf --depend new_infantry\main.d)
-I (../Inc/includes.h)(0x5A0D930D)
+F (../Src/main.c)(0x5A118C8E)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\main.o --omf_browse new_infantry\main.crf --depend new_infantry\main.d)
+I (../Inc/includes.h)(0x5A118DA7)
 I (../Inc/main.h)(0x5A0D9DE0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5A0C6174)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5A0D9DE0)
@@ -841,11 +841,11 @@ I (../Inc/spi.h)(0x5A0D9DDE)
 I (../Inc/tim.h)(0x5A0D9DDF)
 I (../Inc/usart.h)(0x5A0D9DDF)
 I (../Inc/gpio.h)(0x5A0D9DDD)
-I (..\Tasks\Inc\RemoteTask.h)(0x5A0D930D)
-I (..\Tasks\Inc\ControlTask.h)(0x5A0E8D01)
-I (..\Tasks\Inc\IMUTask.h)(0x5A0E8AD0)
-I (..\Tasks\Inc\CANTask.h)(0x5A0E8ACF)
-I (..\Tasks\Inc\pid_regulator.h)(0x5A0E92A4)
+I (..\Tasks\Inc\RemoteTask.h)(0x5A118DA7)
+I (..\Tasks\Inc\ControlTask.h)(0x5A118F0F)
+I (..\Tasks\Inc\IMUTask.h)(0x5A11904D)
+I (..\Tasks\Inc\CANTask.h)(0x5A11904D)
+I (..\Tasks\Inc\pid_regulator.h)(0x5A11904D)
 F (../Src/tim.c)(0x5A0D9DDF)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\tim.o --omf_browse new_infantry\tim.crf --depend new_infantry\tim.d)
 I (../Inc/tim.h)(0x5A0D9DDF)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5A0C6174)
@@ -914,8 +914,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5A0C6175)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5A0C6175)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5A0C6175)
 F (startup_stm32f427xx.s)(0x5A0D9DE6)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 514" --pd "_RTE_ SETA 1" --pd "STM32F427xx SETA 1"--list startup_stm32f427xx.lst --xref -o new_infantry\startup_stm32f427xx.o --depend new_infantry\startup_stm32f427xx.d)
-F (..\Tasks\Src\RemoteTask.c)(0x5A0D34D3)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\remotetask.o --omf_browse new_infantry\remotetask.crf --depend new_infantry\remotetask.d)
-I (../Inc/includes.h)(0x5A0D930D)
+F (..\Tasks\Src\RemoteTask.c)(0x5A118D4B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\remotetask.o --omf_browse new_infantry\remotetask.crf --depend new_infantry\remotetask.d)
+I (../Inc/includes.h)(0x5A118DA7)
 I (../Inc/main.h)(0x5A0D9DE0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5A0C6174)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5A0D9DE0)
@@ -954,13 +954,13 @@ I (../Inc/spi.h)(0x5A0D9DDE)
 I (../Inc/tim.h)(0x5A0D9DDF)
 I (../Inc/usart.h)(0x5A0D9DDF)
 I (../Inc/gpio.h)(0x5A0D9DDD)
-I (..\Tasks\Inc\RemoteTask.h)(0x5A0D930D)
-I (..\Tasks\Inc\ControlTask.h)(0x5A0E8D01)
-I (..\Tasks\Inc\IMUTask.h)(0x5A0E8AD0)
-I (..\Tasks\Inc\CANTask.h)(0x5A0E8ACF)
-I (..\Tasks\Inc\pid_regulator.h)(0x5A0E92A4)
-F (..\Tasks\Src\ControlTask.c)(0x5A0E9C31)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\controltask.o --omf_browse new_infantry\controltask.crf --depend new_infantry\controltask.d)
-I (../Inc/includes.h)(0x5A0D930D)
+I (..\Tasks\Inc\RemoteTask.h)(0x5A118DA7)
+I (..\Tasks\Inc\ControlTask.h)(0x5A118F0F)
+I (..\Tasks\Inc\IMUTask.h)(0x5A11904D)
+I (..\Tasks\Inc\CANTask.h)(0x5A11904D)
+I (..\Tasks\Inc\pid_regulator.h)(0x5A11904D)
+F (..\Tasks\Src\ControlTask.c)(0x5A118F0E)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\controltask.o --omf_browse new_infantry\controltask.crf --depend new_infantry\controltask.d)
+I (../Inc/includes.h)(0x5A118DA7)
 I (../Inc/main.h)(0x5A0D9DE0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5A0C6174)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5A0D9DE0)
@@ -999,13 +999,13 @@ I (../Inc/spi.h)(0x5A0D9DDE)
 I (../Inc/tim.h)(0x5A0D9DDF)
 I (../Inc/usart.h)(0x5A0D9DDF)
 I (../Inc/gpio.h)(0x5A0D9DDD)
-I (..\Tasks\Inc\RemoteTask.h)(0x5A0D930D)
-I (..\Tasks\Inc\ControlTask.h)(0x5A0E8D01)
-I (..\Tasks\Inc\IMUTask.h)(0x5A0E8AD0)
-I (..\Tasks\Inc\CANTask.h)(0x5A0E8ACF)
-I (..\Tasks\Inc\pid_regulator.h)(0x5A0E92A4)
-F (..\Tasks\Src\IMUTask.c)(0x5A0D39E5)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\imutask.o --omf_browse new_infantry\imutask.crf --depend new_infantry\imutask.d)
-I (../Inc/includes.h)(0x5A0D930D)
+I (..\Tasks\Inc\RemoteTask.h)(0x5A118DA7)
+I (..\Tasks\Inc\ControlTask.h)(0x5A118F0F)
+I (..\Tasks\Inc\IMUTask.h)(0x5A11904D)
+I (..\Tasks\Inc\CANTask.h)(0x5A11904D)
+I (..\Tasks\Inc\pid_regulator.h)(0x5A11904D)
+F (..\Tasks\Src\IMUTask.c)(0x5A11904D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\imutask.o --omf_browse new_infantry\imutask.crf --depend new_infantry\imutask.d)
+I (../Inc/includes.h)(0x5A118DA7)
 I (../Inc/main.h)(0x5A0D9DE0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5A0C6174)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5A0D9DE0)
@@ -1044,13 +1044,13 @@ I (../Inc/spi.h)(0x5A0D9DDE)
 I (../Inc/tim.h)(0x5A0D9DDF)
 I (../Inc/usart.h)(0x5A0D9DDF)
 I (../Inc/gpio.h)(0x5A0D9DDD)
-I (..\Tasks\Inc\RemoteTask.h)(0x5A0D930D)
-I (..\Tasks\Inc\ControlTask.h)(0x5A0E8D01)
-I (..\Tasks\Inc\IMUTask.h)(0x5A0E8AD0)
-I (..\Tasks\Inc\CANTask.h)(0x5A0E8ACF)
-I (..\Tasks\Inc\pid_regulator.h)(0x5A0E92A4)
-F (..\Tasks\Src\CANTask.c)(0x5A0E9688)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\cantask.o --omf_browse new_infantry\cantask.crf --depend new_infantry\cantask.d)
-I (../Inc/includes.h)(0x5A0D930D)
+I (..\Tasks\Inc\RemoteTask.h)(0x5A118DA7)
+I (..\Tasks\Inc\ControlTask.h)(0x5A118F0F)
+I (..\Tasks\Inc\IMUTask.h)(0x5A11904D)
+I (..\Tasks\Inc\CANTask.h)(0x5A11904D)
+I (..\Tasks\Inc\pid_regulator.h)(0x5A11904D)
+F (..\Tasks\Src\CANTask.c)(0x5A11904D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\cantask.o --omf_browse new_infantry\cantask.crf --depend new_infantry\cantask.d)
+I (../Inc/includes.h)(0x5A118DA7)
 I (../Inc/main.h)(0x5A0D9DE0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5A0C6174)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5A0D9DE0)
@@ -1089,13 +1089,13 @@ I (../Inc/spi.h)(0x5A0D9DDE)
 I (../Inc/tim.h)(0x5A0D9DDF)
 I (../Inc/usart.h)(0x5A0D9DDF)
 I (../Inc/gpio.h)(0x5A0D9DDD)
-I (..\Tasks\Inc\RemoteTask.h)(0x5A0D930D)
-I (..\Tasks\Inc\ControlTask.h)(0x5A0E8D01)
-I (..\Tasks\Inc\IMUTask.h)(0x5A0E8AD0)
-I (..\Tasks\Inc\CANTask.h)(0x5A0E8ACF)
-I (..\Tasks\Inc\pid_regulator.h)(0x5A0E92A4)
+I (..\Tasks\Inc\RemoteTask.h)(0x5A118DA7)
+I (..\Tasks\Inc\ControlTask.h)(0x5A118F0F)
+I (..\Tasks\Inc\IMUTask.h)(0x5A11904D)
+I (..\Tasks\Inc\CANTask.h)(0x5A11904D)
+I (..\Tasks\Inc\pid_regulator.h)(0x5A11904D)
 F (..\Tasks\Src\pid_regulator.c)(0x5A0E92A4)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Tasks\Inc --C99-I E:\New_Infantry\New_Infantry\MDK-ARM\RTE-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o new_infantry\pid_regulator.o --omf_browse new_infantry\pid_regulator.crf --depend new_infantry\pid_regulator.d)
-I (../Inc/includes.h)(0x5A0D930D)
+I (../Inc/includes.h)(0x5A118DA7)
 I (../Inc/main.h)(0x5A0D9DE0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5A0C6174)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5A0D9DE0)
@@ -1134,9 +1134,9 @@ I (../Inc/spi.h)(0x5A0D9DDE)
 I (../Inc/tim.h)(0x5A0D9DDF)
 I (../Inc/usart.h)(0x5A0D9DDF)
 I (../Inc/gpio.h)(0x5A0D9DDD)
-I (..\Tasks\Inc\RemoteTask.h)(0x5A0D930D)
-I (..\Tasks\Inc\ControlTask.h)(0x5A0E8D01)
-I (..\Tasks\Inc\IMUTask.h)(0x5A0E8AD0)
-I (..\Tasks\Inc\CANTask.h)(0x5A0E8ACF)
-I (..\Tasks\Inc\pid_regulator.h)(0x5A0E92A4)
+I (..\Tasks\Inc\RemoteTask.h)(0x5A118DA7)
+I (..\Tasks\Inc\ControlTask.h)(0x5A118F0F)
+I (..\Tasks\Inc\IMUTask.h)(0x5A11904D)
+I (..\Tasks\Inc\CANTask.h)(0x5A11904D)
+I (..\Tasks\Inc\pid_regulator.h)(0x5A11904D)
 F (..\Tasks\Src\RMLib.lib)(0x59C61DA9)()

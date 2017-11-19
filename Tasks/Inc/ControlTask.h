@@ -1,4 +1,14 @@
-/* Define to prevent recursive inclusion -------------------------------------*/
+/**
+  ******************************************************************************
+  * File Name          : ControlTask.h
+  * Description        : 主控制任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #ifndef __CONTROLTASK_H
 #define __CONTROLTASK_H
 

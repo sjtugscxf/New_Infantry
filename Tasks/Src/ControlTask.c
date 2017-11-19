@@ -1,3 +1,14 @@
+/**
+  ******************************************************************************
+  * File Name          : ControlTask.c
+  * Description        : 主控制任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #include "includes.h"
 
 WorkState_e WorkState = PREPARE_STATE;
@@ -19,6 +30,7 @@ int16_t CMFLIntensity = 0, CMFRIntensity = 0, CMBLIntensity = 0, CMBRIntensity =
 int16_t yawIntensity = 0;		
 int16_t pitchIntensity = 0;
 
+//底盘PID初始化
 void CMControlInit(void)
 {
 	CMRotatePID.Reset(&CMRotatePID);
@@ -28,6 +40,7 @@ void CMControlInit(void)
 	CM4SpeedPID.Reset(&CM4SpeedPID);
 }
 
+//单个底盘电机的控制，下同
 void ControlCMFL(void)
 {		
 	if(s_CMFLCount == 1)
@@ -120,6 +133,7 @@ void ControlCMBR(void)
 	}
 }
 
+//状态机切换
 void WorkStateFSM(void)
 {
 	switch (WorkState)
@@ -129,8 +143,8 @@ void WorkStateFSM(void)
 			if (inputmode == STOP) WorkState = STOP_STATE;
 			
 			if(prepare_time<5000) prepare_time++;
-			if(prepare_time == 3000) GYRO_RST();
-			if(prepare_time == 5000)
+			if(prepare_time == 3000) GYRO_RST();//开机三秒复位陀螺仪
+			if(prepare_time == 5000)//开机五秒进入正常模式
 			{
 				WorkState = NORMAL_STATE;
 				prepare_time = 0;
@@ -140,7 +154,7 @@ void WorkStateFSM(void)
 		{
 			if (inputmode == STOP) WorkState = STOP_STATE;
 		}break;
-		case STOP_STATE:
+		case STOP_STATE://紧急停止
 		{
 			if (inputmode == REMOTE_INPUT)
 			{
@@ -151,6 +165,7 @@ void WorkStateFSM(void)
 	}
 }
 
+//底盘电机CAN信号控制
 void setCMMotor()
 {
 	CanTxMsgTypeDef pData;
@@ -171,9 +186,7 @@ void setCMMotor()
 	CMGMMOTOR_CAN.pTxMsg->Data[6] = (uint8_t)(CMBRIntensity >> 8);
 	CMGMMOTOR_CAN.pTxMsg->Data[7] = (uint8_t)CMBRIntensity;
 
-//	__disable_irq() ;
-	//HAL_NVIC_DisableIRQ(CAN1_TX_IRQn);
-	//HAL_NVIC_DisableIRQ(CAN2_TX_IRQn);
+	//CAN通信前关中断
 	HAL_NVIC_DisableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(USART1_IRQn);
@@ -182,15 +195,14 @@ void setCMMotor()
 	{
 		Error_Handler();
 	}
-	//HAL_NVIC_EnableIRQ(CAN1_TX_IRQn);
-	//HAL_NVIC_EnableIRQ(CAN2_TX_IRQn);
+	//CAN通信后开中断，防止中断影响CAN信号发送
 	HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(USART1_IRQn);
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
-//	__enable_irq() ;
 }
 
+//云台电机CAN信号控制
 void setGMMotor()
 {
 	CanTxMsgTypeDef pData;
@@ -211,9 +223,6 @@ void setGMMotor()
 	CMGMMOTOR_CAN.pTxMsg->Data[6] = 0;
 	CMGMMOTOR_CAN.pTxMsg->Data[7] = 0;
 
-//	__disable_irq() ;
-	//HAL_NVIC_DisableIRQ(CAN1_TX_IRQn);
-	//HAL_NVIC_DisableIRQ(CAN2_TX_IRQn);
 	HAL_NVIC_DisableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(USART1_IRQn);
@@ -222,13 +231,10 @@ void setGMMotor()
 	{
 		Error_Handler();
 	}
-	//HAL_NVIC_EnableIRQ(CAN1_TX_IRQn);
-	//HAL_NVIC_EnableIRQ(CAN2_TX_IRQn);
 	HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(USART1_IRQn);
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
-//	__enable_irq() ;
 }
 
 #define NORMALIZE_ANGLE180(angle) angle = ((angle) > 180) ? ((angle) - 360) : (((angle) < -180) ? (angle) + 360 : angle)
@@ -241,6 +247,7 @@ fw_PID_Regulator_t yawSpeedPID = fw_PID_INIT(30.0, 0.0, 5, 10000.0, 10000.0, 100
 float yawRealAngle = 0.0;
 float pitchRealAngle = 0.0;
 float gap_angle = 0.0;
+//底盘跟随云台旋转控制
 void ControlRotate(void)
 {
 	gap_angle  = (GMYAWRx.angle - yaw_zero) * 360 / 8192.0f;
@@ -255,6 +262,7 @@ void ControlRotate(void)
 	}
 }
 
+//控制云台YAW轴
 void ControlYaw(void)
 {
 	if(s_yawCount == 1)
@@ -280,6 +288,7 @@ void ControlYaw(void)
 	}
 }
 
+//控制云台pitch轴
 void ControlPitch(void)
 {
 	if(s_pitchCount == 1)
@@ -301,6 +310,7 @@ void ControlPitch(void)
 	}
 }
 
+//主控制循环
 void controlLoop()
 {
 	WorkStateFSM();
@@ -312,7 +322,6 @@ void controlLoop()
 		
 		setGMMotor();
 		
-		//ChassisSpeedRef.rotate_ref = 0;
 		ControlCMFL();
 		ControlCMFR();
 		ControlCMBL();
@@ -322,10 +331,12 @@ void controlLoop()
 	}
 }
 
+//时间中断入口函数
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == htim6.Instance)
 	{
+		//主循环在时间中断中启动
 		controlLoop();
 	}
 }

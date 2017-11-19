@@ -1,3 +1,14 @@
+/**
+  ******************************************************************************
+  * File Name          : IMUTask.c
+  * Description        : IMU数据刷新任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #include "includes.h"
 
 #define MPU6500_NSS_Low() HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET)
@@ -75,6 +86,7 @@ uint8_t InitMPU6500(void)
   return 0;
 }
 
+//IMU数据刷新函数，放在main函数主循环中
 void IMURefresh()
 {
 	MPU6500_NSS_Low();

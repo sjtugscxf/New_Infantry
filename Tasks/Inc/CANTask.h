@@ -1,4 +1,14 @@
-/* Define to prevent recursive inclusion -------------------------------------*/
+/**
+  ******************************************************************************
+  * File Name          : CANTask.h
+  * Description        : CAN通信任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #ifndef __CANTASK_H
 #define __CANTASK_H
 

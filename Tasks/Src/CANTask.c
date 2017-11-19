@@ -1,3 +1,14 @@
+/**
+  ******************************************************************************
+  * File Name          : CANTask.c
+  * Description        : CAN通信任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #include "includes.h"
 
 #define CanRxGetU16(canRxMsg, num) (((uint16_t)canRxMsg.Data[num * 2] << 8) | (uint16_t)canRxMsg.Data[num * 2 + 1])
@@ -49,15 +60,16 @@ void InitCanReception()
 	isRcanStarted_ZGYRO = 1;
 }
 
+//CAN接收中断入口函数
 void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan){
-//	__disable_irq() ;
+	//处理CAN接收数据前关中断
 	HAL_NVIC_DisableIRQ(CAN1_TX_IRQn);
 	HAL_NVIC_DisableIRQ(CAN2_TX_IRQn);
 	HAL_NVIC_DisableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(USART1_IRQn);
 	HAL_NVIC_DisableIRQ(TIM6_DAC_IRQn);
-	if(hcan == &CMGMMOTOR_CAN){
+	if(hcan == &CMGMMOTOR_CAN){//CAN1数据
 		switch(CMGMCanRxMsg.StdId){
 			case CMFL_RXID:
 				CMFLRx.angle = CanRxGetU16(CMGMCanRxMsg, 0);
@@ -94,7 +106,7 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan){
 			isRcanStarted_CMGM = 1;
 		}
 	}
-	else if(hcan == &ZGYRO_CAN)
+	else if(hcan == &ZGYRO_CAN)//CAN2数据
 	{
 		switch(ZGYROCanRxMsg.StdId)
 		{
@@ -114,15 +126,16 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan){
 			isRcanStarted_ZGYRO = 1;
 		}
 	}
+	//处理CAN接收数据后开中断
 	HAL_NVIC_EnableIRQ(CAN1_TX_IRQn);
 	HAL_NVIC_EnableIRQ(CAN2_TX_IRQn);
 	HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(USART1_IRQn);
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
-//	__enable_irq() ;
 }
 
+//单轴陀螺仪初始化，在主控制任务中，开机三秒后执行
 void GYRO_RST(void)
 {
 	CanTxMsgTypeDef pData;
@@ -142,9 +155,6 @@ void GYRO_RST(void)
 	ZGYRO_CAN.pTxMsg->Data[6] = 0x06;
 	ZGYRO_CAN.pTxMsg->Data[7] = 0x07;
 
-//	__disable_irq() ;
-	//HAL_NVIC_DisableIRQ(CAN1_TX_IRQn);
-	//HAL_NVIC_DisableIRQ(CAN2_TX_IRQn);
 	HAL_NVIC_DisableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_DisableIRQ(USART1_IRQn);
@@ -153,11 +163,8 @@ void GYRO_RST(void)
 	{
 		Error_Handler();
 	}
-	//HAL_NVIC_EnableIRQ(CAN1_TX_IRQn);
-	//HAL_NVIC_EnableIRQ(CAN2_TX_IRQn);
 	HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(CAN2_RX0_IRQn);
 	HAL_NVIC_EnableIRQ(USART1_IRQn);
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
-//	__enable_irq() ;
 }

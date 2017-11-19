@@ -1,4 +1,14 @@
-/* Define to prevent recursive inclusion -------------------------------------*/
+/**
+  ******************************************************************************
+  * File Name          : IMUTask.h
+  * Description        : IMU数据刷新任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #ifndef __IMUTASK_H
 #define __IMUTASK_H
 

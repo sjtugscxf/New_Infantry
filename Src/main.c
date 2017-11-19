@@ -73,7 +73,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-//	__disable_irq() ;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -102,6 +101,7 @@ int main(void)
   MX_TIM6_Init();
 
   /* USER CODE BEGIN 2 */
+	//各模块初始化
 	InitRemoteControl();
 	InitMPU6500();
 	CMControlInit();
@@ -111,12 +111,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//	__enable_irq() ;
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+		//IMU数据更新放在主循环中
 		IMURefresh();
   }
   /* USER CODE END 3 */

@@ -1,3 +1,14 @@
+/**
+  ******************************************************************************
+  * File Name          : RemoteTask.c
+  * Description        : 遥控器处理任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #include "includes.h"
 uint8_t rc_data[18];
 RC_Ctl_t RC_CtrlData;
@@ -6,6 +17,7 @@ ChassisSpeed_Ref_t ChassisSpeedRef;
 float yawAngleTarget = 0.0;
 float pitchAngleTarget = 0.0;
 
+//遥控器控制量初始化
 void RemoteTaskInit()
 {
 	ChassisSpeedRef.forward_back_ref = 0.0f;
@@ -15,6 +27,7 @@ void RemoteTaskInit()
 	pitchAngleTarget = 0.0;
 }
 
+//摇杆控制量解算
 void RemoteControlProcess(Remote *rc)
 {
 	ChassisSpeedRef.forward_back_ref = (rc->ch1 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_CHASSIS_SPEED_REF_FACT;
@@ -24,6 +37,7 @@ void RemoteControlProcess(Remote *rc)
 	yawAngleTarget   -= (rc->ch2 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_YAW_ANGLE_INC_FACT; 
 }
 
+//遥控器数据解算
 void RemoteDataProcess(uint8_t *pData)
 {
 	if(pData == NULL)
@@ -73,6 +87,7 @@ void RemoteDataProcess(uint8_t *pData)
 	}
 }
 
+//初始化遥控器串口DMA接收
 void InitRemoteControl(){
 	if(HAL_UART_Receive_DMA(&RC_UART, rc_data, 18) != HAL_OK){
 			Error_Handler();
@@ -80,6 +95,7 @@ void InitRemoteControl(){
 	RemoteTaskInit();
 }
 
+//遥控器串口中断入口函数，从此处开始执行
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
 {
 	if(UartHandle == &RC_UART){

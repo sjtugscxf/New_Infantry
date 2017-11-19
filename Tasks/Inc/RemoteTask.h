@@ -1,4 +1,14 @@
-/* Define to prevent recursive inclusion -------------------------------------*/
+/**
+  ******************************************************************************
+  * File Name          : RemoteTask.h
+  * Description        : 遥控器处理任务
+  ******************************************************************************
+  *
+  * Copyright (c) 2018 Team TPP-Shanghai Jiao Tong University
+  * All rights reserved.
+  *
+  ******************************************************************************
+  */
 #ifndef __REMOTETASK_H
 #define __REMOTETASK_H
 
@@ -51,7 +61,6 @@ typedef enum
 	STOP = 2,
 }InputMode_e;
 
-//remote data process
 typedef __packed struct
 {
     int16_t forward_back_ref;

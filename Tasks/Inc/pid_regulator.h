@@ -70,7 +70,7 @@ typedef struct PID_Regulator_t
 	float kp_offset;
 	float ki_offset;
 	float kd_offset;
-	void (*Calc)(struct PID_Regulator_t *pid);//º¯ÊýÖ¸Õë
+	void (*Calc)(struct PID_Regulator_t *pid);
 	void (*Reset)(struct PID_Regulator_t *pid);
 }PID_Regulator_t;
 void PID_Reset(PID_Regulator_t *pid);
