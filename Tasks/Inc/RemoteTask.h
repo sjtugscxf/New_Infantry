@@ -16,10 +16,59 @@
 
 #define RC_UART huart1
 
-#define REMOTE_CONTROLLER_STICK_OFFSET      1024u  
+
 #define STICK_TO_CHASSIS_SPEED_REF_FACT     2.f
 #define STICK_TO_PITCH_ANGLE_INC_FACT       0.008f
 #define STICK_TO_YAW_ANGLE_INC_FACT         0.005f
+
+//遥感常量数据区
+#define REMOTE_CONTROLLER_STICK_OFFSET  1024u  
+
+#define REMOTE_SWITCH_VALUE_UP         	0x01u  
+#define REMOTE_SWITCH_VALUE_DOWN				0x02u
+#define REMOTE_SWITCH_VALUE_CENTRAL			0x03u
+
+#define REMOTE_SWITCH_CHANGE_1TO3      (uint8_t)((REMOTE_SWITCH_VALUE_UP << 2) | REMOTE_SWITCH_VALUE_CENTRAL)   
+#define REMOTE_SWITCH_CHANGE_2TO3      (uint8_t)((REMOTE_SWITCH_VALUE_DOWN << 2) | REMOTE_SWITCH_VALUE_CENTRAL)  
+#define REMOTE_SWITCH_CHANGE_3TO1      (uint8_t)((REMOTE_SWITCH_VALUE_CENTRAL << 2) | REMOTE_SWITCH_VALUE_UP)
+#define REMOTE_SWITCH_CHANGE_3TO2      (uint8_t)((REMOTE_SWITCH_VALUE_CENTRAL << 2) | REMOTE_SWITCH_VALUE_DOWN)
+
+#define REMOTE_SWITCH_CHANGE_1TO3TO2   (uint8_t)((REMOTE_SWITCH_VALUE_UP << 4) |\
+                                                 (REMOTE_SWITCH_VALUE_CENTRAL << 2) |\
+                                                 (REMOTE_SWITCH_VALUE_DOWN))   
+
+#define REMOTE_SWITCH_CHANGE_2TO3TO1   (uint8_t)((REMOTE_SWITCH_VALUE_DOWN << 4) |\
+                                                 (REMOTE_SWITCH_VALUE_CENTRAL << 2) |\
+                                                 (REMOTE_SWITCH_VALUE_UP)) 
+
+#define REMOTE_SWITCH_VALUE_BUF_DEEP   16u
+
+//键鼠常量数据区
+#define MOUSE_TO_PITCH_ANGLE_INC_FACT 		0.025f * 3	//
+#define MOUSE_TO_YAW_ANGLE_INC_FACT 			0.025f * 3	//原代码中被注释掉了
+
+#define NORMAL_FORWARD_BACK_SPEED 			500
+#define NORMAL_LEFT_RIGHT_SPEED   			650
+#define HIGH_FORWARD_BACK_SPEED 			660
+#define HIGH_LEFT_RIGHT_SPEED   			800
+#define LOW_FORWARD_BACK_SPEED 			100
+#define LOW_LEFT_RIGHT_SPEED   			130
+#define MIDDLE_FORWARD_BACK_SPEED 			200
+#define MIDDLE_LEFT_RIGHT_SPEED   			220
+
+#define MOUSE_LR_RAMP_TICK_COUNT			50
+#define MOUSR_FB_RAMP_TICK_COUNT			60
+
+
+#define VAL_LIMIT(val, min, max)\
+if(val<=min)\
+{\
+	val = min;\
+}\
+else if(val>=max)\
+{\
+	val = max;\
+}\
 
 typedef __packed struct
 {
@@ -68,13 +117,32 @@ typedef __packed struct
     int16_t rotate_ref;
 }ChassisSpeed_Ref_t;
 
+typedef __packed struct
+{
+	 uint8_t switch_value_raw;      // the current switch value
+	 uint8_t switch_value1;				  //  last value << 2 | value
+	 uint8_t switch_value2;				  //
+	 uint8_t switch_long_value; 		//keep still if no switching
+	 uint8_t switch_value_buf[REMOTE_SWITCH_VALUE_BUF_DEEP]; 
+	 uint8_t buf_index;
+	 uint8_t buf_last_index;
+	 uint8_t buf_end_index;
+}RemoteSwitch_t;
+
+//**暂时写在这里，理论上应该写在裁判系统的Task中**//
+typedef __packed enum
+{
+	ONLINE,
+	OFFLINE
+}JudgeState_e;
+
+
 extern ChassisSpeed_Ref_t ChassisSpeedRef; 
+extern InputMode_e inputmode;
 extern float yawAngleTarget;
 extern float pitchAngleTarget;
 
 void InitRemoteControl();
-
-extern InputMode_e inputmode;
 void RemoteTaskInit();
 
 #endif /*__ REMOTETASK_H */

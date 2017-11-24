@@ -33,6 +33,7 @@
 "new_infantry\cantask.o"
 "new_infantry\pid_regulator.o"
 "..\Tasks\Src\RMLib.lib"
+"new_infantry\shoottask.o"
 --library_type=microlib --strict --scatter "New_Infantry\New_Infantry.sct"
 
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
