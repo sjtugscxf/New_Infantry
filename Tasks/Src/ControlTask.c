@@ -330,13 +330,20 @@ void controlLoop()
 		setCMMotor();
 	}
 }
-
+int y = 0;
+int x = 0;
 //时间中断入口函数
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == htim6.Instance)
 	{
 		//主循环在时间中断中启动
-		controlLoop();
+		//controlLoop();
+		y = y+1;
+	}
+	else if (htim->Instance == htim7.Instance)
+	{
+		HMILoop();
+		x = x + 1;
 	}
 }

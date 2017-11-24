@@ -45,3 +45,4 @@ new_infantry\remotetask.o: ..\Tasks\Inc\ControlTask.h
 new_infantry\remotetask.o: ..\Tasks\Inc\IMUTask.h
 new_infantry\remotetask.o: ..\Tasks\Inc\CANTask.h
 new_infantry\remotetask.o: ..\Tasks\Inc\pid_regulator.h
+new_infantry\remotetask.o: ..\Tasks\Inc\HMITask.h

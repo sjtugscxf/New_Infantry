@@ -45,3 +45,4 @@ new_infantry\cantask.o: ..\Tasks\Inc\ControlTask.h
 new_infantry\cantask.o: ..\Tasks\Inc\IMUTask.h
 new_infantry\cantask.o: ..\Tasks\Inc\CANTask.h
 new_infantry\cantask.o: ..\Tasks\Inc\pid_regulator.h
+new_infantry\cantask.o: ..\Tasks\Inc\HMITask.h

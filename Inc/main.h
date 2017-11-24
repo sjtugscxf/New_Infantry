@@ -47,8 +47,32 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define COL3_Pin GPIO_PIN_8
+#define COL3_GPIO_Port GPIOB
+#define COL1_Pin GPIO_PIN_4
+#define COL1_GPIO_Port GPIOE
+#define COL0_Pin GPIO_PIN_0
+#define COL0_GPIO_Port GPIOF
 #define NSS_Pin GPIO_PIN_6
 #define NSS_GPIO_Port GPIOF
+#define OLED_SCL_Pin GPIO_PIN_10
+#define OLED_SCL_GPIO_Port GPIOF
+#define ROW1_Pin GPIO_PIN_0
+#define ROW1_GPIO_Port GPIOC
+#define ROW2_Pin GPIO_PIN_1
+#define ROW2_GPIO_Port GPIOC
+#define ROW3_Pin GPIO_PIN_4
+#define ROW3_GPIO_Port GPIOA
+#define Oled_DC_Pin GPIO_PIN_4
+#define Oled_DC_GPIO_Port GPIOC
+#define Oled_SDA_Pin GPIO_PIN_5
+#define Oled_SDA_GPIO_Port GPIOA
+#define Oled_RST_Pin GPIO_PIN_5
+#define Oled_RST_GPIO_Port GPIOC
+#define ROW0_Pin GPIO_PIN_1
+#define ROW0_GPIO_Port GPIOB
+#define COL2_Pin GPIO_PIN_12
+#define COL2_GPIO_Port GPIOE
 
 /* ########################## Assert Selection ############################## */
 /**

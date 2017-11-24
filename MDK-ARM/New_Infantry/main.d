@@ -1,5 +1,4 @@
 new_infantry\main.o: ../Src/main.c
-new_infantry\main.o: ../Inc/includes.h
 new_infantry\main.o: ../Inc/main.h
 new_infantry\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 new_infantry\main.o: ../Inc/stm32f4xx_hal_conf.h
@@ -39,9 +38,11 @@ new_infantry\main.o: ../Inc/spi.h
 new_infantry\main.o: ../Inc/tim.h
 new_infantry\main.o: ../Inc/usart.h
 new_infantry\main.o: ../Inc/gpio.h
+new_infantry\main.o: ../Inc/includes.h
 new_infantry\main.o: ..\Tasks\Inc\RemoteTask.h
 new_infantry\main.o: ../Inc/includes.h
 new_infantry\main.o: ..\Tasks\Inc\ControlTask.h
 new_infantry\main.o: ..\Tasks\Inc\IMUTask.h
 new_infantry\main.o: ..\Tasks\Inc\CANTask.h
 new_infantry\main.o: ..\Tasks\Inc\pid_regulator.h
+new_infantry\main.o: ..\Tasks\Inc\HMITask.h
