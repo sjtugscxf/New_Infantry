@@ -12,19 +12,26 @@
 #include "includes.h"
 FrictionWheelState_e FrictionWheelState;
 Shoot_State_e ShootState;
-RampGen_t frictionRamp = RAMP_GEN_DEFAULT;		//摩擦轮斜坡
-RampGen_t LRSpeedRamp = RAMP_GEN_DEFAULT;   	//键盘速度斜坡
-RampGen_t FBSpeedRamp = RAMP_GEN_DEFAULT;
+RampGen_t frictionRamp = RAMP_GEN_DAFAULT;		//摩擦轮斜坡
+RampGen_t LRSpeedRamp = RAMP_GEN_DAFAULT;   	//键盘速度斜坡
+RampGen_t FBSpeedRamp = RAMP_GEN_DAFAULT;
 uint16_t remoteShootDelay = 500;
 static uint32_t RotateCNT = 0;	//长按连发计数
 static uint16_t CNT_1s = 75;		//用于避免四连发模式下两秒内连射8发过于密集的情况
 static uint16_t CNT_250ms = 18;	//???????????
 
+
+void InitUserTimer(void)
+{
+	HAL_TIM_PWM_Start(&FRICTION_TIM, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&FRICTION_TIM, TIM_CHANNEL_2);
+}
+
 //手柄模式射击控制函数	
 void SetFrictionWheelSpeed(uint16_t x)
 {
-	//__HAL_TIM_SET_COMPARE(&FRICTION_TIM, TIM_CHANNEL_1, x);//配置数目不够
-	//__HAL_TIM_SET_COMPARE(&FRICTION_TIM, TIM_CHANNEL_2, x);
+	__HAL_TIM_SET_COMPARE(&FRICTION_TIM, TIM_CHANNEL_1, x);//配置数目不够
+	__HAL_TIM_SET_COMPARE(&FRICTION_TIM, TIM_CHANNEL_2, x);
 }
 	
 void RemoteShootControl(RemoteSwitch_t *sw, uint8_t val) 
@@ -38,40 +45,23 @@ void RemoteShootControl(RemoteSwitch_t *sw, uint8_t val)
 				ShootState = NOSHOOTING;
 				frictionRamp.ResetCounter(&frictionRamp);
 				FrictionWheelState = FRICTION_WHEEL_START_TURNNING;	 
-				//LASER_ON(); 
-			}
-			else if(sw->switch_value1 == REMOTE_SWITCH_CHANGE_3TO1)	
-			{
-				//mode 3TO1 operation
-			}
+			}				 		
 		}break;
 		case FRICTION_WHEEL_START_TURNNING:
 		{
 			if(sw->switch_value1 == REMOTE_SWITCH_CHANGE_3TO1)   
 			{
-				//LASER_OFF();//zy0802
 				ShootState = NOSHOOTING;
 				SetFrictionWheelSpeed(1000);
 				FrictionWheelState = FRICTION_WHEEL_OFF;
 				frictionRamp.ResetCounter(&frictionRamp);
 			}
-			
-			else if(sw->switch_value1 == REMOTE_SWITCH_CHANGE_3TO2)	//左侧拨杆直接从上拨到下 取弹指令
-			{
-				//LASER_OFF();
-				ShootState = NOSHOOTING;
-				SetFrictionWheelSpeed(1000);
-				FrictionWheelState = FRICTION_WHEEL_OFF;
-				frictionRamp.ResetCounter(&frictionRamp);
-				
-				//getGolf();
-				
-			}
-			
 			else
 			{
-				/*斜坡函数必须有，避免电流过大烧坏主板*/
 				SetFrictionWheelSpeed(1000 + (FRICTION_WHEEL_MAX_DUTY-1000)*frictionRamp.Calc(&frictionRamp)); 
+				//SetFrictionWheelSpeed(1300); 
+				//SetFrictionWheelSpeed(1000);
+				//g_friction_wheel_state = FRICTION_WHEEL_ON; 
 				if(frictionRamp.IsOverflow(&frictionRamp))
 				{
 					FrictionWheelState = FRICTION_WHEEL_ON; 	
@@ -83,22 +73,14 @@ void RemoteShootControl(RemoteSwitch_t *sw, uint8_t val)
 		{
 			if(sw->switch_value1 == REMOTE_SWITCH_CHANGE_3TO1)   
 			{
-				//LASER_OFF();//zy0802
 				FrictionWheelState = FRICTION_WHEEL_OFF;				  
 				SetFrictionWheelSpeed(1000); 
 				frictionRamp.ResetCounter(&frictionRamp);
 				ShootState = NOSHOOTING;
 			}
-			else if(sw->switch_value_raw == 3)	//左侧拨杆拨至中间，开枪
+			else if(sw->switch_value_raw == 2)
 			{
 				ShootState = SHOOTING;
-				if(remoteShootDelay != 0) 
-					--remoteShootDelay;
-				else
-				{
-					//shootOneGolf();
-					remoteShootDelay = 500;
-				}
 			}
 			else
 			{

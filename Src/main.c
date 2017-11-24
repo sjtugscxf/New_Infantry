@@ -37,14 +37,14 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-//#include "main.h"
-//#include "stm32f4xx_hal.h"
-//#include "can.h"
-//#include "dma.h"
-//#include "spi.h"
-//#include "tim.h"
-//#include "usart.h"
-//#include "gpio.h"
+#include "main.h"
+#include "stm32f4xx_hal.h"
+#include "can.h"
+#include "dma.h"
+#include "spi.h"
+#include "tim.h"
+#include "usart.h"
+#include "gpio.h"
 
 /* USER CODE BEGIN Includes */
 #include "includes.h"
@@ -99,6 +99,7 @@ int main(void)
   MX_SPI5_Init();
   MX_USART1_UART_Init();
   MX_TIM6_Init();
+  MX_TIM12_Init();
 
   /* USER CODE BEGIN 2 */
 	//各模块初始化
@@ -107,6 +108,7 @@ int main(void)
 	CMControlInit();
 	InitCanReception();
 	HAL_TIM_Base_Start_IT(&htim6);
+	InitUserTimer();
   /* USER CODE END 2 */
 
   /* Infinite loop */

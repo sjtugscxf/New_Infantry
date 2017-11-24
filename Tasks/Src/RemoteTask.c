@@ -27,6 +27,13 @@ float pitchAngleTarget = 0.0;
 //遥控器控制量初始化
 void RemoteTaskInit()
 {
+	frictionRamp.SetScale(&frictionRamp, FRICTION_RAMP_TICK_COUNT);
+	LRSpeedRamp.SetScale(&LRSpeedRamp, MOUSE_LR_RAMP_TICK_COUNT);
+	FBSpeedRamp.SetScale(&FBSpeedRamp, MOUSR_FB_RAMP_TICK_COUNT);
+	frictionRamp.ResetCounter(&frictionRamp);
+	LRSpeedRamp.ResetCounter(&LRSpeedRamp);
+	FBSpeedRamp.ResetCounter(&FBSpeedRamp);
+	
 	yawAngleTarget = 0.0;
 	pitchAngleTarget = 0.0;
 	/*底盘速度初始化*/
